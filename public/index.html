@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Tagelharpa Multi-String Calculator</title>
+  <!-- UIkit CSS (local copy) -->
+  <link rel="stylesheet" href="css/uikit.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="uk-container uk-margin-top">
+    <h1 class="uk-heading-line"><span>Tagelharpa Multi-String Calculator</span></h1>
+    
+    <form class="uk-form-stacked uk-margin">
+      <!-- Scale Length -->
+      <div class="uk-margin">
+        <label for="scaleLength" class="uk-form-label">Scale Length (26–70 cm):</label>
+        <input type="number" id="scaleLength" class="uk-input" placeholder="e.g. 40" step="0.1" required>
+      </div>
+      
+      <!-- Number of Strings -->
+      <div class="uk-margin">
+        <label for="numStrings" class="uk-form-label">Number of Strings:</label>
+        <select id="numStrings" class="uk-select">
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
+      <!-- Interval Pattern -->
+      <div class="uk-margin">
+        <label for="pattern" class="uk-form-label">Tuning Style (interval pattern):</label>
+        <select id="pattern" class="uk-select">
+          <!-- You can add or remove patterns as needed -->
+          <option value="1515">1515</option>
+          <option value="5151">5151</option>
+          <option value="1414">1414</option>
+          <option value="4141">4141</option>
+          <option value="1155">1155</option>
+          <option value="1144">1144</option>
+        </select>
+      </div>
+
+      <!-- Final Tuning Drop-down -->
+      <div class="uk-margin">
+        <label for="finalTuning" class="uk-form-label">Recommended Tunings:</label>
+        <select id="finalTuning" class="uk-select">
+          <!-- Populated dynamically with feasible tunings (e.g., C4 G3 C3) -->
+        </select>
+      </div>
+      
+      <button type="button" id="generateBtn" class="uk-button uk-button-large uk-margin-top">Generate Tunings</button>
+      <button type="button" id="calculateBtn" class="uk-button uk-button-large uk-margin-top">Calculate</button>
+    </form>
+    
+    <div class="uk-margin">
+      <h2>String Material Recommendations</h2>
+      <table class="uk-table uk-table-striped" id="stringTable">
+        <thead>
+          <tr>
+            <th>String #</th>
+            <th>Note</th>
+            <th>Gut</th>
+            <th>Horse Hair</th>
+            <th>Dacron (Multi-Strand)</th>
+            <th>Fishing Line (Multi-Strand)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- One row per string -->
+        </tbody>
+      </table>
+    </div>
+    
+    <div id="noteDistanceTable" class="uk-margin">
+      <!-- Single-octave scale table for each semitone 0..12 -->
+    </div>
+    
+    <footer class="uk-margin-top">
+      <h3>References:</h3>
+      <ul>
+        <li>
+          String Tension and Material Guidelines from 
+          <a href="https://www.gamutstrings.com/calculators/calculator.htm" target="_blank">Gamut Strings</a>
+        </li>
+        <li>
+          General String Design Principles from 
+          <a href="https://tension.stringjoy.com/" target="_blank">Stringjoy Tension Calculator</a>
+        </li>
+        <li>
+          Physics of String Vibration from 
+          <a href="https://en.wikipedia.org/wiki/Vibrating_string" target="_blank">Wikipedia: Vibrating String</a>
+        </li>
+        <li>Tagelharpa tuning examples from traditional Scandinavian sources</li>
+      </ul>
+    </footer>
+  </div>
+  
+  <!-- UIkit JS (local copies) -->
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

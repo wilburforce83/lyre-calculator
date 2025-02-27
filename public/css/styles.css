@@ -1,0 +1,11 @@
+/* styles.css */
+
+/* Custom styles and overrides */
+
+/* Override UIkit button styles to keep black buttons */
+.uk-button {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* You can add any additional custom styling here */
