@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Tagelharpa Multi-String Calculator</title>
+  <title>Tagelharpa Design Calculator</title>
+  <style>
+    /* Example default styling to keep the element hidden initially */
+    #designPrintOut {
+      display: none;
+    }
+  </style>
   <!-- UIkit CSS (local copy) -->
   <link rel="stylesheet" href="css/uikit.min.css">
   <!-- Custom CSS -->
@@ -63,7 +69,7 @@
         </button>
       </div>
     </form>
-    
+    <div id="designPrintOut">
     <!-- String Material Recommendations -->
     <div class="uk-margin">
       <h2>String Material Recommendations</h2>
@@ -106,15 +112,18 @@
         </div>
         
         <!-- Right Column: Image (replace with your own) -->
-        <div>
-          <img src="img/tagelharpa_dimensions.png" alt="Tagelharpa Dimensions" style="max-width:100%;">
-        </div>
+         <div>
+          <h2>Drawing</h2>
+          <div id="talharpaContainer"></div>
+         </div>
+
+ 
       </div>
     </div>
     
     <!-- Single-Octave Scale Table -->
     <div id="noteDistanceTable" class="uk-margin"></div>
-    
+  </div>
     <footer class="uk-margin-top">
       <h3>References:</h3>
       <ul>
@@ -138,7 +147,9 @@
   <!-- UIkit JS (local copies) -->
   <script src="js/uikit.min.js"></script>
   <script src="js/uikit-icons.min.js"></script>
+  <script src="js/draw.js"></script>
   <!-- Custom JS -->
   <script src="js/main.js"></script>
+  <script src="js/draw.js"></script>
 </body>
 </html>

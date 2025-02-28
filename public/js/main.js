@@ -244,8 +244,9 @@ function buildCriticalDimensionsTable(scaleCm, numStrings) {
 }
 
 /**
- * Generate the array of dimension objects for the "Critical Dimensions" table.
- * 
+ * Generate the array of dimension objects for the "Critical Dimensions" table,
+ * AND build+draw the Talharpa SVG at the end using drawTalharpaSVG(config).
+ *
  * - Bridge width: piecewise from real data
  *   60 mm @ 30 cm
  *   70 mm @ 56 cm
@@ -263,28 +264,32 @@ function generateCriticalDimensions(scaleCm, numStrings) {
   const pegToBridge = scaleMm;
 
   // (B) Overall length (piecewise logic)
+  //   - Implementation detail: assume this is a function you already have
+  //     that returns a numeric length in mm.
   const overallLenMm = calcOverallLength(scaleCm);
 
   // (C) Window length = half the scale + 20mm
   const windowLength = (scaleMm * 0.5) + 20;
 
-  // (D) Window width = pegSpacing * numStrings; half a string width either side of the span of the string
+  // (D) Window width = pegSpacing * numStrings
+  //     half a string width either side of the span of the string
   const pegSpacing = 36; 
   const windowWidth = pegSpacing * numStrings;
 
   // (E) Peg spacing = pegSpacing
+
   // (F) Headstock width = windowWidth + 50
   const headstockWidth = windowWidth + 50;
 
-  // (G,H) Bridge width & spacing from new real data:
-  //  - 60 mm @ 30 cm
-  //  - 70 mm @ 56 cm
-  //  - linear interpolation in [30..56], clamp outside that range
-  let rawBridgeWidth = calcBridgeWidthFromScale(scaleCm);
+  // (G,H) Bridge width & spacing from new real data (piecewise logic)
+  //   - 60 mm @ 30 cm
+  //   - 70 mm @ 56 cm
+  //   - linear interpolation in [30..56], clamp outside that range
+  const rawBridgeWidth = calcBridgeWidthFromScale(scaleCm);
 
   // Subtract 12 mm margin each side => usable span
-  const margin = 12;
-  let usableSpan = rawBridgeWidth - 2 * margin;
+  const marginPerSide = 12;
+  let usableSpan = rawBridgeWidth - 2 * marginPerSide;
   if (usableSpan < 0) usableSpan = 0; // clamp
 
   let gap = 0;
@@ -299,7 +304,8 @@ function generateCriticalDimensions(scaleCm, numStrings) {
   // (J) Body min. depth => placeholder
   const bodyMinDepth = 45;
 
-  return [
+  // Build the dimension array
+  const dims = [
     {
       name: "Peg to Bridge",
       key: "A",
@@ -361,7 +367,77 @@ function generateCriticalDimensions(scaleCm, numStrings) {
       comment: "Modify to taste"
     }
   ];
+
+  // ----------------------------------------------------------------------
+  // BUILD A CONFIG OBJECT AND DRAW THE TALHARPA SVG
+  // (these values are either derived above or set to defaults)
+  // ----------------------------------------------------------------------
+  
+  // Example "cutOutTop": we keep using 35 as a standard default
+  const cutOutTop = 35;
+  
+  // Another example "bridgeLength" default
+  const bridgeLength = 5;
+
+  // We can also define top/bottom radius factors and so on:
+  const config = {
+    // from the dimension calculations
+    headstockWidth: headstockWidth,
+    bodyMinWidth: bodyMinWidth,
+    overallLenMm: overallLenMm,
+    cutOutTop: cutOutTop,
+    windowWidth: windowWidth,
+    windowLength: windowLength,
+
+    // corner radii factors (defaults):
+    rTopFactor: 0.08,
+    rBottomFactor: 0.2,
+    rWindowFactor: 0.08,
+
+    rawBridgeWidth: rawBridgeWidth,
+    bridgeLength: bridgeLength,
+    
+    // pegStart: half of cutOutTop, or you could define it differently
+    pegStart: cutOutTop / 2,
+
+    // scale in mm for the distance from pegStart to the bridge center:
+    scaleMm: pegToBridge,
+    
+    // from dims:
+    pegSpacing: pegSpacing,
+    numStrings: numStrings,
+    pegHoleRadius: 3,
+    
+    // gap between strings at the bridge end
+    gap: gap,
+
+    // optional display settings:
+    margin: 10,
+    svgWidthPx: 400,
+    svgHeightPx: 800,
+    stringColor: '#ccc'
+  };
+
+  // Now we draw the Talharpa SVG using your function drawTalharpaSVG(config).
+  // Make sure you have that function available in your code base.
+  
+  const svgElement = drawTalharpaSVG(config);
+
+  // Insert (or replace) the SVG inside a container:
+  const container = document.getElementById("talharpaContainer");
+  if (container) {
+    container.innerHTML = '';         // clear any existing
+    container.appendChild(svgElement);
+  } else {
+    console.warn("No element with id='talharpaContainer' found.");
+  }
+  var element = document.getElementById("designPrintOut");
+      element.style.display = "block";
+
+  // Return the dimension array as before
+  return dims;
 }
+
 
 /**
  * Helper function for the new bridge width logic:
