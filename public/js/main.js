@@ -304,6 +304,14 @@ function generateCriticalDimensions(scaleCm, numStrings) {
   // (J) Body min. depth => placeholder
   const bodyMinDepth = 45;
 
+  // tailTopWidth = gap * numStrings
+const tailTopWidth = gap * numStrings;
+const tailBottomWidth = tailTopWidth * 0.7;
+let diff = overallLenMm - scaleMm;
+if (diff < 0) diff = 0;
+const tailLength = 0.4 * diff;
+const tailRadius = 4;
+
   // Build the dimension array
   const dims = [
     {
@@ -365,7 +373,25 @@ function generateCriticalDimensions(scaleCm, numStrings) {
       key: "J",
       value: bodyMinDepth.toFixed(1),
       comment: "Modify to taste"
-    }
+    },
+    {
+        name: "Tail top width",
+        key: "K",
+        value: tailTopWidth.toFixed(0),
+        comment: "Width at top of tailpiece"
+      },
+      {
+        name: "Tail bottom width",
+        key: "L",
+        value: tailBottomWidth.toFixed(0),
+        comment: "Width at bottom of tailpiece"
+      },
+      {
+        name: "Tail length",
+        key: "M",
+        value: tailLength.toFixed(0),
+        comment: "Length of tailpiece"
+      }
   ];
 
   // ----------------------------------------------------------------------
