@@ -14,48 +14,57 @@
     <h1 class="uk-heading-line"><span>Tagelharpa Multi-String Calculator</span></h1>
     
     <form class="uk-form-stacked uk-margin">
-      <!-- Scale Length -->
-      <div class="uk-margin">
-        <label for="scaleLength" class="uk-form-label">Scale Length (26–70 cm):</label>
-        <input type="number" id="scaleLength" class="uk-input" placeholder="e.g. 40" step="0.1" required>
+      <div class="uk-grid-small uk-child-width-1-2@s" uk-grid>
+        
+        <!-- Scale Length -->
+        <div>
+          <label for="scaleLength" class="uk-form-label">Scale Length (26–70 cm):</label>
+          <input 
+            type="number" 
+            id="scaleLength" 
+            class="uk-input" 
+            placeholder="e.g. 40" 
+            step="0.1" 
+            required
+          >
+        </div>
+        
+        <!-- Number of Strings -->
+        <div>
+          <label for="numStrings" class="uk-form-label">Number of Strings:</label>
+          <select id="numStrings" class="uk-select">
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        
+        <!-- Tuning Style -->
+        <div>
+          <label for="pattern" class="uk-form-label">Tuning Style (interval pattern):</label>
+          <select id="pattern" class="uk-select">
+            <!-- Populated dynamically for chosen number of strings -->
+          </select>
+        </div>
+        
+        <!-- Recommended Tunings -->
+        <div>
+          <label for="finalTuning" class="uk-form-label">Recommended Tunings:</label>
+          <select id="finalTuning" class="uk-select">
+            <!-- Populated dynamically with feasible tunings -->
+          </select>
+        </div>
+        
       </div>
       
-      <!-- Number of Strings -->
       <div class="uk-margin">
-        <label for="numStrings" class="uk-form-label">Number of Strings:</label>
-        <select id="numStrings" class="uk-select">
-          <option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option>
-        </select>
+        <button type="button" id="calculateBtn" class="uk-button uk-button-large">
+          Calculate
+        </button>
       </div>
-
-      <!-- Interval Pattern -->
-      <div class="uk-margin">
-        <label for="pattern" class="uk-form-label">Tuning Style (interval pattern):</label>
-        <select id="pattern" class="uk-select">
-          <!-- You can add or remove patterns as needed -->
-          <option value="1515">1515</option>
-          <option value="5151">5151</option>
-          <option value="1414">1414</option>
-          <option value="4141">4141</option>
-          <option value="1155">1155</option>
-          <option value="1144">1144</option>
-        </select>
-      </div>
-
-      <!-- Final Tuning Drop-down -->
-      <div class="uk-margin">
-        <label for="finalTuning" class="uk-form-label">Recommended Tunings:</label>
-        <select id="finalTuning" class="uk-select">
-          <!-- Populated dynamically with feasible tunings (e.g., C4 G3 C3) -->
-        </select>
-      </div>
-      
-      <button type="button" id="generateBtn" class="uk-button uk-button-large uk-margin-top">Generate Tunings</button>
-      <button type="button" id="calculateBtn" class="uk-button uk-button-large uk-margin-top">Calculate</button>
     </form>
     
+    <!-- String Material Recommendations -->
     <div class="uk-margin">
       <h2>String Material Recommendations</h2>
       <table class="uk-table uk-table-striped" id="stringTable">
@@ -70,14 +79,41 @@
           </tr>
         </thead>
         <tbody>
-          <!-- One row per string -->
+          <!-- Filled dynamically -->
         </tbody>
       </table>
     </div>
     
-    <div id="noteDistanceTable" class="uk-margin">
-      <!-- Single-octave scale table for each semitone 0..12 -->
+    <!-- Critical Dimensions & Reference Image -->
+    <div id="criticalDimensionsSection" class="uk-margin">
+      <div class="uk-grid-small uk-child-width-1-2@m" uk-grid>
+        <!-- Left Column: Table -->
+        <div>
+          <h2>Critical Dimensions</h2>
+          <table class="uk-table uk-table-striped" id="criticalDimensionsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Key</th>
+                <th>Dimension (mm)</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Filled dynamically -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Right Column: Image (replace with your own) -->
+        <div>
+          <img src="img/tagelharpa_dimensions.png" alt="Tagelharpa Dimensions" style="max-width:100%;">
+        </div>
+      </div>
     </div>
+    
+    <!-- Single-Octave Scale Table -->
+    <div id="noteDistanceTable" class="uk-margin"></div>
     
     <footer class="uk-margin-top">
       <h3>References:</h3>
