@@ -410,6 +410,7 @@ const tailRadius = 4;
     // from the dimension calculations
     headstockWidth: headstockWidth,
     bodyMinWidth: bodyMinWidth,
+    bodyMinDepth: bodyMinDepth,
     overallLenMm: overallLenMm,
     cutOutTop: cutOutTop,
     windowWidth: windowWidth,
@@ -448,12 +449,20 @@ const tailRadius = 4;
   // Make sure you have that function available in your code base.
   
   const svgElement = drawTalharpaSVG(config);
+  const sideSvg = drawTalharpaSideSVG(config);
 
   // Insert (or replace) the SVG inside a container:
   const container = document.getElementById("talharpaContainer");
+  const sideContainer = document.getElementById('talharpaSideContainer')
   if (container) {
     container.innerHTML = '';         // clear any existing
     container.appendChild(svgElement);
+  } else {
+    console.warn("No element with id='talharpaContainer' found.");
+  }
+  if (sideContainer) {
+    sideContainer.innerHTML = '';         // clear any existing
+    sideContainer.appendChild(sideSvg);
   } else {
     console.warn("No element with id='talharpaContainer' found.");
   }
@@ -461,6 +470,10 @@ const tailRadius = 4;
       element.style.display = "block";
 
   // Return the dimension array as before
+
+  
+
+
   return dims;
 }
 
