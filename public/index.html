@@ -1,155 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Tagelharpa Design Calculator</title>
-  <style>
-    /* Example default styling to keep the element hidden initially */
-    #designPrintOut {
-      display: none;
-    }
-  </style>
-  <!-- UIkit CSS (local copy) -->
-  <link rel="stylesheet" href="css/uikit.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <div class="uk-container uk-margin-top">
-    <h1 class="uk-heading-line"><span>Tagelharpa Multi-String Calculator</span></h1>
-    
-    <form class="uk-form-stacked uk-margin">
-      <div class="uk-grid-small uk-child-width-1-2@s" uk-grid>
-        
-        <!-- Scale Length -->
-        <div>
-          <label for="scaleLength" class="uk-form-label">Scale Length (26–70 cm):</label>
-          <input 
-            type="number" 
-            id="scaleLength" 
-            class="uk-input" 
-            placeholder="e.g. 40" 
-            step="0.1" 
-            required
-          >
-        </div>
-        
-        <!-- Number of Strings -->
-        <div>
-          <label for="numStrings" class="uk-form-label">Number of Strings:</label>
-          <select id="numStrings" class="uk-select">
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-          </select>
-        </div>
-        
-        <!-- Tuning Style -->
-        <div>
-          <label for="pattern" class="uk-form-label">Tuning Style (interval pattern):</label>
-          <select id="pattern" class="uk-select">
-            <!-- Populated dynamically for chosen number of strings -->
-          </select>
-        </div>
-        
-        <!-- Recommended Tunings -->
-        <div>
-          <label for="finalTuning" class="uk-form-label">Recommended Tunings:</label>
-          <select id="finalTuning" class="uk-select">
-            <!-- Populated dynamically with feasible tunings -->
-          </select>
-        </div>
-        
-      </div>
-      
-      <div class="uk-margin">
-        <button type="button" id="calculateBtn" class="uk-button uk-button-large">
-          Calculate
-        </button>
-      </div>
-    </form>
-    <div id="designPrintOut">
-    <!-- String Material Recommendations -->
-    <div class="uk-margin">
-      <h2>String Material Recommendations</h2>
-      <table class="uk-table uk-table-striped" id="stringTable">
-        <thead>
-          <tr>
-            <th>String #</th>
-            <th>Note</th>
-            <th>Gut</th>
-            <th>Horse Hair</th>
-            <th>Dacron (Multi-Strand)</th>
-            <th>Fishing Line (Multi-Strand)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Filled dynamically -->
-        </tbody>
-      </table>
-    </div>
-    
-    <!-- Critical Dimensions & Reference Image -->
-    <div id="criticalDimensionsSection" class="uk-margin">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Tagelharpa Design Calculator</title>
+    <style>
+      /* Example default styling to keep the element hidden initially */
+      #designPrintOut {
+        display: none;
+      }
+    </style>
+    <!-- UIkit CSS (local copy) -->
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="uk-container uk-margin-top">
+      <h1 class="uk-heading-line"><span>Tagelharpa Design Calculator</span></h1>
       <div class="uk-column-1-2 uk-column-divider">
-        <!-- Left Column: Table -->
-        <div>
-          <h2>Critical Dimensions</h2>
-          <table class="uk-table uk-table-striped" id="criticalDimensionsTable">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Key</th>
-                <th>Dimension (mm)</th>
-                <th>Comment</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Filled dynamically -->
-            </tbody>
-          </table>
-        </div>
-        
-        <!-- Right Column: Image (replace with your own) -->
-         
-          <div id="talharpaContainer"></div>
-          <div id="talharpaSideContainer"></div>
-        
+        <form class="uk-form-stacked uk-margin">
 
- 
+            <!-- Scale Length -->
+            <div>
+              <label for="scaleLength" class="uk-form-label"
+                >Scale Length (26–70 cm):</label
+              >
+              <input
+                type="number"
+                id="scaleLength"
+                class="uk-input"
+                placeholder="e.g. 40"
+                step="0.1"
+                required
+              />
+            </div>
+
+            <!-- Number of Strings -->
+            <div>
+              <label for="numStrings" class="uk-form-label"
+                >Number of Strings:</label
+              >
+              <select id="numStrings" class="uk-select">
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            <!-- Tuning Style -->
+            <div>
+              <label for="pattern" class="uk-form-label"
+                >Tuning Style (interval pattern):</label
+              >
+              <select id="pattern" class="uk-select">
+                <!-- Populated dynamically for chosen number of strings -->
+              </select>
+            </div>
+
+            <!-- Recommended Tunings -->
+            <div>
+              <label for="finalTuning" class="uk-form-label"
+                >Recommended Tunings:</label
+              >
+              <select id="finalTuning" class="uk-select">
+                <!-- Populated dynamically with feasible tunings -->
+              </select>
+            </div>
+          </div>
+
+          <div class="uk-margin">
+            <button
+              type="button"
+              id="calculateBtn"
+              class="uk-button uk-button-large"
+            >
+              Calculate
+            </button>
+        </form>
+         <!-- Critical Dimensions & Reference Image -->
+        <div id="designPrintOut" class="uk-margin-top">
+            <h2 class="uk-heading-line"><span>Technical Specification</span></h2>
+            <div class="uk-column-1-2 uk-column-divider">
+                <div id="talharpaContainer"></div>
+                <div id="talharpaSideContainer"></div>
+              </div>
+         <div id="criticalDimensionsSection" class="uk-margin">
+           
+              <!-- Left Column: Table -->
+              <div>
+                <h3>Critical Dimensions</h3>
+                <table
+                  class="uk-table uk-table-striped"
+                  id="criticalDimensionsTable"
+                >
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Key</th>
+                      <th>Dimension (mm)</th>
+                      <th>Comment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Filled dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+  
+            <!-- String Material Recommendations -->
+            <div class="uk-margin">
+              <h3>String Material Recommendations</h3>
+              <table class="uk-table uk-table-striped" id="stringTable">
+                <thead>
+                  <tr>
+                    <th>String #</th>
+                    <th>Note</th>
+                    <th>Gut</th>
+                    <th>Horse Hair</th>
+                    <th>Dacron (Multi-Strand)</th>
+                    <th>Fishing Line (Multi-Strand)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Filled dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+      <div class="uk-container">
+       
+
+        <!-- Single-Octave Scale Table -->
+        <div id="noteDistanceTable" class="uk-margin"></div>
       </div>
     </div>
-    
-    <!-- Single-Octave Scale Table -->
-    <div id="noteDistanceTable" class="uk-margin"></div>
-  </div>
-    <footer class="uk-margin-top">
-      <h3>References:</h3>
-      <ul>
-        <li>
-          String Tension and Material Guidelines from 
-          <a href="https://www.gamutstrings.com/calculators/calculator.htm" target="_blank">Gamut Strings</a>
-        </li>
-        <li>
-          General String Design Principles from 
-          <a href="https://tension.stringjoy.com/" target="_blank">Stringjoy Tension Calculator</a>
-        </li>
-        <li>
-          Physics of String Vibration from 
-          <a href="https://en.wikipedia.org/wiki/Vibrating_string" target="_blank">Wikipedia: Vibrating String</a>
-        </li>
-        <li>Tagelharpa tuning examples from traditional Scandinavian sources</li>
-      </ul>
-    </footer>
-  </div>
-  
-  <!-- UIkit JS (local copies) -->
-  <script src="js/uikit.min.js"></script>
-  <script src="js/uikit-icons.min.js"></script>
-  <!-- Custom JS -->
-  <script src="js/main.js"></script>
-  <script src="js/drawFront.js"></script>
-  <script src="js/drawSide.js"></script>
-</body>
+      <footer class="uk-margin-top uk-container">
+        <h3>References:</h3>
+        <ul>
+          <li>
+            String Tension and Material Guidelines from
+            <a
+              href="https://www.gamutstrings.com/calculators/calculator.htm"
+              target="_blank"
+              >Gamut Strings</a
+            >
+          </li>
+          <li>
+            General String Design Principles from
+            <a href="https://tension.stringjoy.com/" target="_blank"
+              >Stringjoy Tension Calculator</a
+            >
+          </li>
+          <li>
+            Physics of String Vibration from
+            <a
+              href="https://en.wikipedia.org/wiki/Vibrating_string"
+              target="_blank"
+              >Wikipedia: Vibrating String</a
+            >
+          </li>
+          <li>
+            Tagelharpa tuning examples from traditional Scandinavian sources
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- UIkit JS (local copies) -->
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/drawFront.js"></script>
+    <script src="js/drawSide.js"></script>
+  </body>
 </html>
