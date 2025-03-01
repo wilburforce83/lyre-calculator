@@ -21,7 +21,7 @@ function drawTalharpaSideSVG(config) {
   const {
     overallLenMm,
     bodyMinDepth,
-    margin = 10,
+    margin = 50,
     svgWidthPx = 300,
     svgHeightPx = 800
   } = config;

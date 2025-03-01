@@ -305,6 +305,11 @@ function generateCriticalDimensions(scaleCm, numStrings) {
   const calculatedDepth = scaleMm * 0.12;
 const bodyMinDepth = Math.max(45, Math.min(calculatedDepth, 70));
 
+// Example "cutOutTop": we keep using 35 as a standard default
+const cutOutTop = 35;
+
+// soundhole centre
+const soundHoleCenter = ((scaleMm - windowLength - (cutOutTop/2)) / 1.85) + windowLength+cutOutTop;
 
   // tailTopWidth = gap * numStrings
 const tailTopWidth = gap * numStrings;
@@ -338,13 +343,13 @@ const tailRadius = 4;
       name: "Window width",
       key: "D",
       value: windowWidth.toFixed(1),
-      comment: "Adjust as needed for peg arrangement"
+      comment: "Dotted line denotes reduced width over drone string(s)"
     },
     {
       name: "Peg spacing",
       key: "E",
       value: pegSpacing.toFixed(1),
-      comment: ""
+      comment: "Fixed, based on image research"
     },
     {
       name: "Headstock width",
@@ -393,6 +398,18 @@ const tailRadius = 4;
         key: "M",
         value: tailLength.toFixed(0),
         comment: "Length of tailpiece"
+      },
+      {
+        name: "Headstock Thickness",
+        key: "N",
+        value: cutOutTop,
+        comment: "Length of headstock"
+      },
+      {
+        name: "Soundhole Centre",
+        key: "O",
+        value: soundHoleCenter.toFixed(0),
+        comment: "Centre of hole (circa 50mm)"
       }
   ];
 
@@ -401,8 +418,7 @@ const tailRadius = 4;
   // (these values are either derived above or set to defaults)
   // ----------------------------------------------------------------------
   
-  // Example "cutOutTop": we keep using 35 as a standard default
-  const cutOutTop = 35;
+  
   
   // Another example "bridgeLength" default
   const bridgeLength = 5;
