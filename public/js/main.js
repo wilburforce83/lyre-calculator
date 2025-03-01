@@ -302,7 +302,9 @@ function generateCriticalDimensions(scaleCm, numStrings) {
   const bodyMinWidth = calcBodyMinWidth(scaleCm);
 
   // (J) Body min. depth => placeholder
-  const bodyMinDepth = 45;
+  const calculatedDepth = scaleMm * 0.12;
+const bodyMinDepth = Math.max(45, Math.min(calculatedDepth, 70));
+
 
   // tailTopWidth = gap * numStrings
 const tailTopWidth = gap * numStrings;
