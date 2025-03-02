@@ -310,6 +310,19 @@ const cutOutTop = 35;
 
 // soundhole centre
 const soundHoleCenter = ((scaleMm - windowLength - (cutOutTop/2)) / 1.85) + windowLength+cutOutTop;
+const bottomOfWindow = windowLength+cutOutTop;
+
+// Neck start position
+const neckStart = (soundHoleCenter - bottomOfWindow)/2 +bottomOfWindow;
+
+// Neck Thickness
+
+let neckThickness = 0;
+if (scaleMm > 450){
+    neckThickness = 35;
+} else {
+    neckThickness = 25;
+}
 
   // tailTopWidth = gap * numStrings
 const tailTopWidth = gap * numStrings;
@@ -410,6 +423,18 @@ const tailRadius = 4;
         key: "O",
         value: soundHoleCenter.toFixed(0),
         comment: "Centre of hole (circa 50mm)"
+      },
+      {
+        name: "Neck Start",
+        key: "P",
+        value: neckStart.toFixed(0),
+        comment: "Neck Start Position"
+      },
+      {
+        name: "Neck Thickness",
+        key: "Q",
+        value: neckThickness.toFixed(0),
+        comment: ""
       }
   ];
 
@@ -433,6 +458,8 @@ const tailRadius = 4;
     cutOutTop: cutOutTop,
     windowWidth: windowWidth,
     windowLength: windowLength,
+    neckStart: neckStart,
+    neckThickness: neckThickness,
 
     // corner radii factors (defaults):
     rTopFactor: 0.08,
