@@ -514,6 +514,9 @@ const tailRadius = 4;
   var element = document.getElementById("designPrintOut");
       element.style.display = "block";
 
+      var printing = document.getElementById("savePdfButton");
+      printing.style.display = "block";
+
   // Return the dimension array as before
 
   

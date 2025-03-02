@@ -20,4 +20,13 @@
     font-size: small !important;
   }
 
+  .pdf-print * {
+    font-size: 0.9em !important;
+  }
+
+  .page-break {
+    page-break-after: always; /* For older browsers */
+    break-after: page;        /* For modern browsers */
+  }
+
 /* You can add any additional custom styling here */

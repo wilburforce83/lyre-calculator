@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="uk-container uk-margin-top">
+    <div class="uk-container uk-margin-top" id="pdf-area">
       <h1 class="uk-heading-line"><span>Tagelharpa Design Calculator</span></h1>
       <div class="uk-column-1-2 uk-column-divider">
         <form class="uk-form-stacked uk-margin">
@@ -69,22 +69,29 @@
             </div>
           </div>
 
-          <div class="uk-margin">
-            <button
-              type="button"
-              id="calculateBtn"
-              class="uk-button uk-button-large"
-            >
-              Calculate
-            </button>
+          <div class="uk-grid-small uk-child-width-1-2" uk-grid>
+            <div>
+              <button type="button" id="calculateBtn" class="uk-button uk-button-medium uk-width-1-1">
+                Calculate
+              </button>
+            </div>
+            <div>
+              <button type="button" id="savePdfButton" class="uk-button uk-button-medium uk-width-1-1" style="display: none;">
+                Save as PDF
+              </button>
+            </div>
+          </div>
+          
         </form>
          <!-- Critical Dimensions & Reference Image -->
         <div id="designPrintOut" class="uk-margin-top">
-            <h2 class="uk-heading-line"><span>Technical Specification</span></h2>
+            <h2 class="uk-heading-line"><span>Technical Drawing</span></h2>
             <div class="uk-column-1-2 uk-column-divider">
                 <div id="talharpaContainer"></div>
                 <div id="talharpaSideContainer"></div>
               </div>
+              <div class="page-break"></div>
+
          <div id="criticalDimensionsSection" class="uk-margin">
            
               <!-- Left Column: Table -->
@@ -108,8 +115,9 @@
                 </table>
               </div>
             </div>
-  
+           
             <!-- String Material Recommendations -->
+            <div class="page-break"></div>
             <div class="uk-margin">
               <h3>String Material Recommendations</h3>
               <table class="uk-table uk-table-striped" id="stringTable">
@@ -129,13 +137,17 @@
               </table>
             </div>
           </div>
-      </div>
-      <div class="uk-container">
+          <div class="uk-container">
        
 
-        <!-- Single-Octave Scale Table -->
-        <div id="noteDistanceTable" class="uk-margin"></div>
-      </div>
+            <!-- Single-Octave Scale Table -->
+            <div id="noteDistanceTable" class="uk-margin"></div>
+            
+          </div>
+        </div>
+      
+      
+
     </div>
       <footer class="uk-margin-top uk-container">
         <h3>References:</h3>
@@ -168,13 +180,25 @@
         </ul>
       </footer>
     </div>
+    <!-- Spinner Overlay -->
+<div
+id="spinnerOverlay"
+style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 9999; align-items: center; justify-content: center;"
+>
+<div uk-spinner="ratio: 3"></div>
+</div>
+
 
     <!-- UIkit JS (local copies) -->
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
+    <script src="js/html2pdf.bundle.min.js"></script>
+
+
     <!-- Custom JS -->
     <script src="js/main.js"></script>
     <script src="js/drawFront.js"></script>
     <script src="js/drawSide.js"></script>
+    <script src="js/saveToPdf.js"></script>
   </body>
 </html>
