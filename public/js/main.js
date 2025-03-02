@@ -313,7 +313,7 @@ const soundHoleCenter = ((scaleMm - windowLength - (cutOutTop/2)) / 1.85) + wind
 const bottomOfWindow = windowLength+cutOutTop;
 
 // Neck start position
-const neckStart = (soundHoleCenter - bottomOfWindow)/2 +bottomOfWindow;
+const neckStart = (soundHoleCenter - bottomOfWindow)/3 +bottomOfWindow;
 
 // Neck Thickness
 
