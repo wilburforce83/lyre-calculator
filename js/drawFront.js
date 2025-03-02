@@ -42,6 +42,7 @@ function drawTalharpaSVG(config) {
     windowWidth,
     windowLength,
     rTopFactor,
+    neckStart,
     rBottomFactor,
     rWindowFactor,
     rawBridgeWidth,
@@ -292,6 +293,30 @@ function drawTalharpaSVG(config) {
   centralHole.setAttribute("stroke", "black");
   centralHole.setAttribute("stroke-width", "1");
   svg.appendChild(centralHole);
+
+  // Calculate the width of the body at the neckStart level.
+// (Assuming neckStart is given in mm.)
+const widthAtNeck = headstockWidth + (bodyMinWidth - headstockWidth) * (neckStart / overallLenMm);
+
+// Determine the vertical position for the neck line (relative to the overall drawing).
+const neckY = totalMargin + neckStart;
+
+// Center the line horizontally: 
+// topMidX is defined as margin + (maxBodyWidth/2), where maxBodyWidth = Math.max(headstockWidth, bodyMinWidth)
+const leftAtNeck = topMidX - (widthAtNeck / 2);
+const rightAtNeck = topMidX + (widthAtNeck / 2);
+
+// Create a horizontal line at the neckStart level.
+const neckLine = document.createElementNS(svgNS, "line");
+neckLine.setAttribute("x1", leftAtNeck);
+neckLine.setAttribute("y1", neckY);
+neckLine.setAttribute("x2", rightAtNeck);
+neckLine.setAttribute("y2", neckY);
+neckLine.setAttribute("stroke", "black");
+neckLine.setAttribute("stroke-width", "1");
+
+svg.appendChild(neckLine);
+
   
   // ==================================================
   // DIMENSIONS
