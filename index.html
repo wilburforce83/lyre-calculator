@@ -4,20 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Tagelharpa Design Calculator</title>
-    <style>
-      /* Example default styling to keep the element hidden initially */
-      #designPrintOut {
-        display: none;
-      }
-    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+    
     <!-- UIkit CSS (local copy) -->
     <link rel="stylesheet" href="css/uikit.min.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+     <!-- Navbar -->
+     <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar; cls-active: uk-navbar-sticky;">
+        <!-- Navbar content here -->
+     <div class="uk-container uk-container-expand" style="background-color: #000;">
+        <nav class="uk-navbar" uk-navbar style="background-color: #000; color: #fff;">
+          <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo navbar-title" href="index.html" aria-label="Home">
+              Tagelharpa Designer
+            </a>
+          </div>
+          <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+              <li class="uk-active"><a href="index.html" style="color: #fff;">Home</a></li>
+              <li><a href="about.html" style="color: #fff;">About</a></li>
+            </ul>
+            <div class="uk-navbar-item">
+              <a class="uk-icon-link" href="https://github.com/wilburforce83" target="_blank" uk-icon="icon: github" style="color: #fff;"></a>
+            </div>
+            <!-- Mobile toggle -->
+            <a class="uk-navbar-toggle uk-hidden@m uk-icon" href="#offcanvas" uk-navbar-toggle-icon uk-toggle aria-label="Open menu"></a>
+          </div>
+        </nav>
+      </div>
+    </div>
+      <div class="uk-container uk-margin-top">
+      <!-- Introduction and helper -->
+      <div class="uk-flex uk-flex-center">
+        <div class="uk-card uk-card-small uk-card-body uk-width-1-2@m" id="intro">
+          <h4 class="uk-card-title">How to use this calculator</h4>
+          <p>The calculator consolidates data from across the internet from research papers to photographs that I have scaled dimensions from. By entering your preferred instrument scale, and the number of strings the calculator will produce a set of drawing to build the instrument.</p>
+        </div>
+    </div>
+      </div>
     <div class="uk-container uk-margin-top" id="pdf-area">
-      <h1 class="uk-heading-line"><span>Tagelharpa Design Calculator</span></h1>
       <div class="uk-column-1-2 uk-column-divider">
         <form class="uk-form-stacked uk-margin">
 
@@ -83,13 +112,17 @@
           </div>
           
         </form>
+
+          
          <!-- Critical Dimensions & Reference Image -->
+        
         <div id="designPrintOut" class="uk-margin-top">
-            <h2 class="uk-heading-line"><span>Technical Drawing</span></h2>
+            <h3 class="uk-heading-line"><span>Critical Dimensions Drawings</span></h3>
             <div class="uk-column-1-2 uk-column-divider">
                 <div id="talharpaContainer"></div>
                 <div id="talharpaSideContainer"></div>
-              </div>
+            </div>
+            
               <div class="page-break"></div>
 
          <div id="criticalDimensionsSection" class="uk-margin">
@@ -115,9 +148,16 @@
                 </table>
               </div>
             </div>
-           
+            <!--Suggested Frame Build Drawing-->
+            <div class="page-break"></div>
+            <h3 class="uk-heading-line"><span>Suggested Build Process</span></h3>
+            <div class="uk-column-1-2 uk-column-divider">
+                <div id="talharpaFrameContainer"> 
+                </div>
+            </div>
             <!-- String Material Recommendations -->
             <div class="page-break"></div>
+
             <div class="uk-margin">
               <h3>String Material Recommendations</h3>
               <table class="uk-table uk-table-striped" id="stringTable">
@@ -149,36 +189,9 @@
       
 
     </div>
-      <footer class="uk-margin-top uk-container">
-        <h3>References:</h3>
-        <ul>
-          <li>
-            String Tension and Material Guidelines from
-            <a
-              href="https://www.gamutstrings.com/calculators/calculator.htm"
-              target="_blank"
-              >Gamut Strings</a
-            >
-          </li>
-          <li>
-            General String Design Principles from
-            <a href="https://tension.stringjoy.com/" target="_blank"
-              >Stringjoy Tension Calculator</a
-            >
-          </li>
-          <li>
-            Physics of String Vibration from
-            <a
-              href="https://en.wikipedia.org/wiki/Vibrating_string"
-              target="_blank"
-              >Wikipedia: Vibrating String</a
-            >
-          </li>
-          <li>
-            Tagelharpa tuning examples from traditional Scandinavian sources
-          </li>
-        </ul>
-      </footer>
+      
+       
+
     </div>
     <!-- Spinner Overlay -->
 <div
@@ -199,6 +212,7 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
     <script src="js/main.js"></script>
     <script src="js/drawFront.js"></script>
     <script src="js/drawSide.js"></script>
+    <script src="js/drawFrame.js"></script>
     <script src="js/saveToPdf.js"></script>
   </body>
 </html>

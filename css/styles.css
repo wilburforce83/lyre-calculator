@@ -8,9 +8,15 @@
     color: white !important;
 }
 
+
+#intro {
+  font-size: small !important;
+}
 #criticalDimensionsTable {
     font-size: small !important;
   }
+
+
 
   #stringTable {
     font-size: small !important;
@@ -21,12 +27,49 @@
   }
 
   .pdf-print * {
-    font-size: 0.9em !important;
+    font-size: 0.87em !important;
   }
 
   .page-break {
     page-break-after: always; /* For older browsers */
     break-after: page;        /* For modern browsers */
   }
+
+  /* Apply the UnifrakturMaguntia font to the navbar title */
+  .navbar-title {
+    font-family: 'UnifrakturMaguntia', cursive !important;
+    color: #fff !important;
+    font-size: 1.5rem !important;
+    margin: 0;
+  }
+
+  /* Example default styling to keep the element hidden initially */
+  #designPrintOut {
+    display: none;
+  }
+
+  .math-formula {
+    font-family: "STIX Two Math", "Cambria Math", "Arial", sans-serif;
+    font-size: 1.1em;
+    background: #f9f9f9;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    color: #333;
+  }
+
+  #talharpaFrameContainer h3 {
+    font-size: 1rem;      /* Smaller heading size */
+    margin: 0.5rem 0;     /* Adjust vertical spacing */
+  }
+  
+  #talharpaFrameContainer p,
+#talharpaFrameContainer ul,
+#talharpaFrameContainer ol,
+#talharpaFrameContainer li {
+  font-size: 0.70rem;   /* Smaller text for paragraphs and lists */
+  line-height: 1.4;     /* Slightly tighter line spacing */
+  margin: 0.3rem 0;     /* Adjust vertical spacing */
+}
+  
 
 /* You can add any additional custom styling here */

@@ -374,25 +374,25 @@ const tailRadius = 4;
       name: "Bridge width",
       key: "G",
       value: rawBridgeWidth.toFixed(1),
-      comment: ""
+      comment: "Using violin/viola standards"
     },
     {
       name: "Bridge spacing",
       key: "H",
       value: gap.toFixed(1),
-      comment: "Gap between string centers"
+      comment: "Gap between string centers - using violin/viola standards"
     },
     {
       name: "Body min. Width",
       key: "I",
       value: bodyMinWidth.toFixed(1),
-      comment: "Modify to tone"
+      comment: "Modify to tone - wider will be a richer sound"
     },
     {
       name: "Body min. Depth",
       key: "J",
       value: bodyMinDepth.toFixed(1),
-      comment: "Modify to taste"
+      comment: "Modify to tone - deeper will be a richer sound"
     },
     {
         name: "Tail top width",
@@ -410,7 +410,7 @@ const tailRadius = 4;
         name: "Tail length",
         key: "M",
         value: tailLength.toFixed(0),
-        comment: "Length of tailpiece"
+        comment: "Length of tailpiece - recommend thickness of 5-7mm"
       },
       {
         name: "Headstock Thickness",
@@ -434,7 +434,7 @@ const tailRadius = 4;
         name: "Neck Thickness",
         key: "Q",
         value: neckThickness.toFixed(0),
-        comment: ""
+        comment: "Softer materials may require additional thickness"
       }
   ];
 
@@ -490,35 +490,135 @@ const tailRadius = 4;
     stringColor: '#ccc'
   };
 
-  // Now we draw the Talharpa SVG using your function drawTalharpaSVG(config).
-  // Make sure you have that function available in your code base.
-  
-  const svgElement = drawTalharpaSVG(config);
-  const sideSvg = drawTalharpaSideSVG(config);
+  // Generate the three SVGs:
+const frontSvg = drawTalharpaSVG(config);
+const sideSvg = drawTalharpaSideSVG(config);
+const frameSvg = drawTalharpaFrameSVG(config);
 
-  // Insert (or replace) the SVG inside a container:
-  const container = document.getElementById("talharpaContainer");
-  const sideContainer = document.getElementById('talharpaSideContainer')
-  if (container) {
-    container.innerHTML = '';         // clear any existing
-    container.appendChild(svgElement);
-  } else {
-    console.warn("No element with id='talharpaContainer' found.");
-  }
-  if (sideContainer) {
-    sideContainer.innerHTML = '';         // clear any existing
-    sideContainer.appendChild(sideSvg);
-  } else {
-    console.warn("No element with id='talharpaContainer' found.");
-  }
-  var element = document.getElementById("designPrintOut");
-      element.style.display = "block";
+// Insert (or replace) the SVG inside their containers:
+const frontContainer = document.getElementById("talharpaContainer");
+const sideContainer = document.getElementById("talharpaSideContainer");
+const frameContainer = document.getElementById("talharpaFrameContainer");
 
-      var printing = document.getElementById("savePdfButton");
-      printing.style.display = "block";
+if (frontContainer) {
+  frontContainer.innerHTML = '';  // clear any existing
+  frontContainer.appendChild(frontSvg);
+} else {
+  console.warn("No element with id='talharpaContainer' found.");
+}
 
-  // Return the dimension array as before
+if (sideContainer) {
+  sideContainer.innerHTML = '';  // clear any existing
+  sideContainer.appendChild(sideSvg);
+} else {
+  console.warn("No element with id='talharpaSideContainer' found.");
+}
 
+if (frameContainer) {
+  frameContainer.innerHTML = '';  // clear any existing
+  frameContainer.appendChild(frameSvg);
+
+  // Create a wrapper element in JavaScript
+const wrapperDiv = document.createElement('div');
+wrapperDiv.innerHTML = `
+  <p>NOTE 1: Wall thickness 7mm, at base 18mm to support tailpiece anchoring point.</p>
+  <p>NOTE 2: Notch is a notch 3-4mm on both sides of the headstock. It is recommended to glue hardwood plates, or ply across this section
+to reduce the stress on the headstock. Stiffening both sides will put more of the stress in compression down the neck. 
+Alternatively, use a softer wood with the grain running across the headstock - the core will grain running the length of the 
+Instrument.</p>
+<h3>1. Prepare Your Work Area and Materials</h3>
+<p>
+  For an initial Talharpa build, it's best to use inexpensive wood and simple hand or power tools:
+</p>
+<ul>
+  <li><strong>Wood Choice:</strong> C24 construction‐grade spruce (200 × 75 mm) joists are affordable and durable enough for a first attempt.</li>
+  <li><strong>Tools Needed:</strong> Tape measure, ruler, pencil, clamps, jigsaw (or hand saw), sanding block or sander (80–120 grit), and eye/dust protection.</li>
+  <li><strong>Layout:</strong> Transfer the Talharpa’s front outline (from your drawing) onto the wide face of the spruce joist. Double‐check critical measurements (overall length, body width at top & bottom, etc.).</li>
+</ul>
+
+<h3>2. Rough‐Cut the Outer Shape</h3>
+<p>
+  Once the outline is traced on the board, clamp it securely before cutting:
+</p>
+<ul>
+  <li><strong>Cut Outside the Lines:</strong> Use a jigsaw (or hand saw) to remove the bulk of the waste, leaving 1–2 mm outside your marked line.</li>
+  <li><strong>Smooth the Perimeter:</strong> Use a rasp, file, or coarse sandpaper to work down to the exact outline. This ensures accurate curves around the headstock and bottom radius.</li>
+</ul>
+
+<h3>3. Mark and Cut the Internal Frame Section</h3>
+<p>
+  The interior cut‐out is offset 7 mm from the sides and 18 mm at the bottom for tailpiece reinforcement:
+</p>
+<ul>
+  <li><strong>Mark the Inner Lines:</strong> Measure inward 7 mm along each side, and 18 mm from the bottom. Sketch these lines to match the taper shown in your Talharpa frame drawing.</li>
+  <li><strong>Drill Starter Holes (Optional):</strong> If using a jigsaw for the inner window, drill a hole inside the waste area to insert the blade.</li>
+  <li><strong>Cut the Interior:</strong> Carefully saw along (or just outside) your inner line. Remove sections in stages if needed.</li>
+  <li><strong>Sand or Rasp the Interior:</strong> Smooth the inner edges, maintaining the 7 mm side thickness and 18 mm tail thickness.</li>
+</ul>
+
+<h3>4. Final Shaping and Checks</h3>
+<p>
+  After the main cuts are done, refine and inspect the piece:
+</p>
+<ul>
+  <li><strong>Verify Wall Thickness:</strong> Check you have at least 7 mm along the sides and 18 mm at the tail end. A thicker tail area helps anchor the tailpiece securely.</li>
+  <li><strong>Blend Corners:</strong> Use a sanding block, file, or spokeshave to ensure the bottom radius transitions smoothly into the 18 mm offset area.</li>
+  <li><strong>Light Sanding:</strong> Progress from coarse to medium grit on both outer and inner edges. Remove any sharp corners.</li>
+  <li><strong>Optional Sealing:</strong> A simple coat of sealer or oil can protect the wood. For a test build, you may skip the fancy finishes.</li>
+</ul>
+
+<h3>5. Soundboards</h3>
+<p>
+  The Talharpa typically features two soundboards (top and possibly bottom) that can be fashioned from the same spruce joist material:
+</p>
+<ul>
+  <li>
+    <strong>Cut Slivers from the Joist:</strong> 
+    After you have removed the main frame, use a hand saw or band saw to slice off 10–15&nbsp;mm thick boards from the remaining material.
+    Plane these down to your desired soundboard thickness (often 6–7)&nbsp;mm, depending on design and resonance needs).
+  </li>
+  <li>
+    <strong>Add a Base Board (Reinforcement Strip):</strong>
+    For the top soundboard, glue a narrow strip of wood (about 8–10&nbsp;mm square) lengthwise along the underside under the bass string’s bridge location.
+    Taper both ends of this strip and make it around one‐third the total soundboard length, helping transfer vibrations and improve resonance.
+  </li>
+  <li>
+    <strong>Gluing the Soundboard:</strong>
+    Once planed and fitted, glue the soundboard onto the Talharpa frame using a strong wood adhesive (e.g., Gorilla Glue or a specialized instrument glue).
+    Clamp it securely around the perimeter and allow adequate drying time per the glue manufacturer’s instructions.
+  </li>
+</ul>
+<p>
+  This process ensures the top board contributes to the instrument’s tone while maintaining enough strength to handle string tension and everyday use. The same technique can be used for the headstock.
+  There is no real resonance requirement for the headstock so you can use plywood for this support (I would recommend avoiding plywood and hardwood for the soundboards though!)
+</p>
+
+
+<h3>6. Summary</h3>
+<p>
+  By following these steps with a jigsaw, basic hand tools, and C24 spruce, you can build a functional Talharpa frame. 
+  The 7 mm walls and 18 mm tail thickness provide structural support, especially for anchoring the tailpiece. 
+  Once you’re comfortable with this initial prototype, consider upgrading to hardwoods or refining the design for improved tone and aesthetics.
+</p>
+
+`;
+
+// Append this wrapper after your SVG
+frameContainer.appendChild(wrapperDiv);
+
+} else {
+  console.warn("No element with id='talharpaFrameContainer' found.");
+}
+
+var designPrintOut = document.getElementById("designPrintOut");
+if (designPrintOut) {
+  designPrintOut.style.display = "block";
+}
+
+var savePdfButton = document.getElementById("savePdfButton");
+if (savePdfButton) {
+  savePdfButton.style.display = "block";
+}
   
 
 
@@ -649,7 +749,7 @@ function calculateStrings() {
   const noteDistanceDiv = document.getElementById('noteDistanceTable');
   noteDistanceDiv.innerHTML = '';
 
-  let tableHtml = `<h3>Single-Octave Scale (0–12 Semitones)</h3>`;
+  let tableHtml = `<h3>Single-Octave Scale (0–12 Semitones) - Hand positions in CM from pegs</h3>`;
   tableHtml += `<table class="uk-table uk-table-striped">
     <thead>
       <tr>

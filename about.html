@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Tagelharpa Design Calculator</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+    
+    <!-- UIkit CSS (local copy) -->
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+     <!-- Navbar -->
+     <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar; cls-active: uk-navbar-sticky;">
+        <!-- Navbar content here -->
+     
+      
+     <div class="uk-container uk-container-expand" style="background-color: #000;">
+        <nav class="uk-navbar" uk-navbar style="background-color: #000; color: #fff;">
+          <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo navbar-title" href="index.html" aria-label="Home">
+              Tagelharpa Designer
+            </a>
+          </div>
+          <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+              <li class="uk-active"><a href="index.html" style="color: #fff;">Home</a></li>
+              <li><a href="about.html" style="color: #fff;">About</a></li>
+            </ul>
+            <div class="uk-navbar-item">
+              <a class="uk-icon-link" href="https://github.com/wilburforce83" target="_blank" uk-icon="icon: github" style="color: #fff;"></a>
+            </div>
+            <!-- Mobile toggle -->
+            <a class="uk-navbar-toggle uk-hidden@m uk-icon" href="#offcanvas" uk-navbar-toggle-icon uk-toggle aria-label="Open menu"></a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="uk-container uk-margin-top">
+      <h1>About Tagelharpa Designer</h1>
+      <p>
+        This tool is designed to help calculate and visualize various design aspects of the Tagelharpa. It is an attempt to try and create a level of standardisation to help <b>amatuer</b> builders avoid 
+        analysis paralysis. When I started looking at how to build a bowed lyre, I was overwhelmed by how much conflicting information was available about every little aspect.
+        With no disrespect to all the DIY builers out there, this is predominantly being caused by a lack of knowledge, and a necessity to to have to "wing it" until a nice sound is found then that builder
+        will continue to build using those dimensions.
+
+        I have looked over too mamny photos of instruments that I have heard and subjectively think sound the nicest, scaled dimensions from the photos, found the ratios and low-and-behold, there is 
+        a pattern. These patterns are what I have used in my calculator.
+
+    <br><br>
+    <b>NOTE:</b> These dimensions are by no means perfect. A skilled luthier will most likely be able to blow away anything made with this calculator (and I am certain to get some complaints that I am doing something wrong from them on this haha - I know it's not perfect!). However, it does
+    provide a strong starting point and will produce a reasonable sounding instrument. It should drastically reduce the effort that is required to start building from scratch. If it helps at least one other person, I will be happy!
+    <br><br>
+    Thank you, and enjoy!
+    <br><br>
+    Wilbur
+      </p>
+
+      <div class="uk-container uk-margin-top">
+        <h2>Critical Dimensions for the Talharpa Instrument</h2>
+
+<p>
+  The Talharpa’s design is based on a set of proportional relationships that scale the instrument’s dimensions according to the chosen scale length and number of strings.
+  Below is an explanation of each critical dimension using traditional mathematical formulas.
+</p>
+
+<h3>A. String Scale (Peg-to-Bridge Distance)</h3>
+<p>
+  The distance from the nut (or peg) to the bridge is defined as the string scale.
+  <br>
+  <span class="math-formula">A = scaleMm</span>, where 
+  <span class="math-formula">scaleMm = scaleCm × 10</span>.
+</p>
+
+<h3>B. Overall Instrument Length</h3>
+<p>
+  The overall length is calculated piecewise from the scale length (in cm):
+  <br>
+  For <em>scaleCm ≤ 40</em>: 
+  <br>
+  <span class="math-formula">B = scaleCm × 1.66 × 10</span>
+  <br>
+  For <em>scaleCm ≥ 56</em>: 
+  <br>
+  <span class="math-formula">B = scaleCm × 1.43 × 10</span>
+  <br>
+  For <em>40 &lt; scaleCm &lt; 56</em>, let 
+  <span class="math-formula">f = (scaleCm – 40) / 16</span>, then:
+  <br>
+  <span class="math-formula">B = scaleCm × [1.66 – 0.23 × f] × 10</span>
+</p>
+
+<h3>C. Window Length</h3>
+<p>
+  The window (soundboard opening) is designed for a full octave:
+  <br>
+  <span class="math-formula">C = 0.5 × scaleMm + 20</span>
+</p>
+
+<h3>D. Window Width</h3>
+<p>
+  The window width is based on the number of strings and a fixed peg spacing:
+  <br>
+  <span class="math-formula">D = pegSpacing × numStrings</span>,
+  where <span class="math-formula">pegSpacing = 36</span> mm.
+</p>
+
+<h3>E. Peg Spacing</h3>
+<p>
+  The spacing between pegs is fixed:
+  <br>
+  <span class="math-formula">E = 36&nbsp;mm</span>
+</p>
+
+<h3>F. Headstock Width</h3>
+<p>
+  The headstock width is determined by the window width plus an additional 50 mm:
+  <br>
+  <span class="math-formula">F = D + 50</span>
+</p>
+
+<h3>G. Bridge Width</h3>
+<p>
+  The bridge width is defined piecewise:
+  <br>
+  If <em>scaleCm ≤ 30</em>: <span class="math-formula">G = 60&nbsp;mm</span>;
+  <br>
+  If <em>scaleCm ≥ 56</em>: <span class="math-formula">G = 70&nbsp;mm</span>;
+  <br>
+  For <em>30 &lt; scaleCm &lt; 56</em>, let 
+  <span class="math-formula">f = (scaleCm – 30) / 26</span>, then:
+  <br>
+  <span class="math-formula">G = 60 + 10 × f</span>
+</p>
+
+<h3>H. Bridge Spacing</h3>
+<p>
+  After subtracting 12 mm from each side of the bridge width, the usable span is:
+  <br>
+  <span class="math-formula">Usable Span = G – 24</span>
+  <br>
+  If more than one string is used, the gap between string centers is:
+  <br>
+  <span class="math-formula">H = Usable Span / (numStrings – 1)</span>
+</p>
+
+<h3>I. Body Minimum Width</h3>
+<p>
+  The body’s minimum width is determined from empirical data. For example:
+  <br>
+  - For <em>scaleCm ≤ 32</em>: <span class="math-formula">I = 160&nbsp;mm</span>
+  <br>
+  - For <em>32 &lt; scaleCm ≤ 37</em>: I is interpolated from 160 to 190 mm.
+  <br>
+  - For <em>37 &lt; scaleCm &lt; 56</em>: I is interpolated from 190 to 210 mm.
+  <br>
+  - For <em>scaleCm ≥ 56</em>: <span class="math-formula">I = 210&nbsp;mm</span>
+</p>
+
+<h3>J. Body Minimum Depth</h3>
+<p>
+  The body’s depth is given by:
+  <br>
+  <span class="math-formula">J = clamp(scaleMm × 0.12, 45, 70)</span>,
+  meaning the calculated value is limited between 45 mm and 70 mm.
+</p>
+
+<h3>K. Tail Top Width</h3>
+<p>
+  The tailpiece’s top width is defined as:
+  <br>
+  <span class="math-formula">K = H × numStrings</span>
+  <br>
+  (where H is the gap between strings.)
+</p>
+
+<h3>L. Tail Bottom Width</h3>
+<p>
+  The tailpiece’s bottom width is a fraction of the top width:
+  <br>
+  <span class="math-formula">L = K × 0.7</span>
+</p>
+
+<h3>M. Tail Length</h3>
+<p>
+  The tailpiece length is given by:
+  <br>
+  <span class="math-formula">M = 0.4 × (B – scaleMm)</span>,
+  where B is the overall instrument length.
+</p>
+
+<h3>N. Headstock Thickness</h3>
+<p>
+  The headstock thickness is fixed:
+  <br>
+  <span class="math-formula">N = 35&nbsp;mm</span>
+</p>
+
+<h3>O. Soundhole Centre</h3>
+<p>
+  The centre of the soundhole is calculated by:
+  <br>
+  <span class="math-formula">
+    O = ((scaleMm – C – (cutOutTop/2)) / 1.85) + C + cutOutTop
+  </span>
+  <br>
+  where <span class="math-formula">C = windowLength</span> and <span class="math-formula">cutOutTop</span> is the vertical offset for the window.
+</p>
+
+<h3>P. Neck Start</h3>
+<p>
+  The neck start position is determined by the distance between the bottom of the window and the top of the soundhole. With:
+  <br>
+  <span class="math-formula">bottomOfWindow = windowLength + cutOutTop</span>
+  <br>
+  the neck start is:
+  <br>
+  <span class="math-formula">P = ((O – bottomOfWindow) / 3) + bottomOfWindow</span>
+  <br>
+  This sets the vertical point where the neck begins.
+</p>
+
+<h3>Q. Neck Thickness</h3>
+<p>
+  Neck thickness is set based on scale; for instance:
+  <br>
+  <span class="math-formula">
+    Q = { 35 mm if scaleMm > 450; otherwise 25 mm }
+  </span>
+  <br>
+  This parameter accounts for the need for a thicker neck in larger instruments.
+</p>
+
+<h3>R. Width at Neck Level</h3>
+<p>
+  The width of the instrument at the neck level is found by linear interpolation between the top width and the bottom width of the instrument. Let:
+  <br>
+  <span class="math-formula">r = P / B</span>, where P is the Neck Start and B is the Overall Length.
+  <br>
+  Then the width at the neck is:
+  <br>
+  <span class="math-formula">
+    Width<sub>neck</sub> = F + (I – F) × r
+  </span>
+  <br>
+  Here, <span class="math-formula">F</span> is the headstock width (top width) and <span class="math-formula">I</span> is the body minimum width.
+</p>
+
+
+
+      </div>
+
+      <h3>References:</h3>
+      <ul>
+        <li>
+          String Tension and Material Guidelines from
+          <a
+            href="https://www.gamutstrings.com/calculators/calculator.htm"
+            target="_blank"
+            >Gamut Strings</a
+          >
+        </li>
+        <li>
+          General String Design Principles from
+          <a href="https://tension.stringjoy.com/" target="_blank"
+            >Stringjoy Tension Calculator</a
+          >
+        </li>
+        <li>
+          Physics of String Vibration from
+          <a
+            href="https://en.wikipedia.org/wiki/Vibrating_string"
+            target="_blank"
+            >Wikipedia: Vibrating String</a
+          >
+        </li>
+        <li>
+          Tagelharpa tuning examples from traditional Scandinavian sources
+        </li>
+        <li>
+            <strong>Scaled Photographic Measurements:</strong>
+            Measurements derived from photographs using a conversion factor from a known dimension allowed me to extract physical dimensions such as width and depth.
+          </li>
+          <li>
+            <strong>Traditional Instrument Construction Practices:</strong>
+            Insights from maker documentation, historical photographs, and contemporary practices iallowed me to make estimates for the soundboard thickness (averaging around 6–7 mm) and overall body depth (roughly 10–12% of the instrument's overall length, such as 50–70 mm for certain sizes).
+          </li>
+          <li>
+            <strong>Bridge Height Analysis:</strong>
+            Comparative research on instruments like violins and historical tagelharpa examples indicated that violins have an overall bridge height around 33 mm, tagelharpa bridges are typically quite varied but I think this is more down to design by experimentation than for any reason. I have recommended 30-35mm.
+          </li>
+      </ul>
+      <br><br>
+    </div>
+
+
+    <!-- UIkit JS -->
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+  </body>
+</html>

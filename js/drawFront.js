@@ -55,7 +55,7 @@ function drawTalharpaSVG(config) {
     gap,
     drawingMargin = 10,
     extraMargin = 50,
-    svgWidthPx = 600,
+    svgWidthPx = 700,
     svgHeightPx = 800,
     stringColor = "#ccc"
   } = config;
@@ -280,10 +280,17 @@ function drawTalharpaSVG(config) {
   }
   
   // Central Circular Hole in Main Body
-  const centralHoleDiameter = 50;
+  let centralHoleDiameter = 50;
+  if (scaleMm < 350){
+    centralHoleDiameter = 30;
+  }
   const centralHoleRadius = centralHoleDiameter / 2;
   const windowBottomY = windowY + windowLength;
-  const centralHoleCenterY = (windowBottomY + bridgeY) / 1.85;
+  let centralHoleCenterY = (windowBottomY + bridgeY) / 1.85;
+  if (scaleMm < 350){
+    centralHoleDiameter = 30;
+    centralHoleCenterY = (windowBottomY + bridgeY) / 1.9;
+  }
   const centralHoleCenterX = topMidX;
   const centralHole = document.createElementNS(svgNS, "circle");
   centralHole.setAttribute("cx", centralHoleCenterX);
