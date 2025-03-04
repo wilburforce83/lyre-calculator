@@ -90,7 +90,6 @@ function parseIntervalPattern(pattern) {
   return offsets;
 }
 
-
 /**
  * Partial feasibility: if >=50% of the string frequencies are in range, 
  * we include that tuning in the results. 
@@ -116,7 +115,7 @@ function generateFeasibleTunings(scaleLength, intervals) {
     }
 
     // If at least half are in range, we keep it
-    if (inRangeCount >= Math.ceil(intervals.length / 1.5)) {
+    if (inRangeCount >= Math.ceil(intervals.length / 2)) {
       // Convert each freq to nearest main note
       let stringNotes = [];
       for (let f of stringFreqs) {
@@ -249,7 +248,7 @@ function buildCriticalDimensionsTable(scaleCm, numStrings) {
 
 /**
  * Generate the array of dimension objects for the "Critical Dimensions" table,
- * AND build+draw the Tagelharpa SVG at the end using drawTagelharpaSVG(config).
+ * AND build+draw the Talharpa SVG at the end using drawTalharpaSVG(config).
  *
  * - Bridge width: piecewise from real data
  *   60 mm @ 30 cm
@@ -443,7 +442,7 @@ const tailRadius = 4;
   ];
 
   // ----------------------------------------------------------------------
-  // BUILD A CONFIG OBJECT AND DRAW THE TAgeLHARPA SVG
+  // BUILD A CONFIG OBJECT AND DRAW THE TALHARPA SVG
   // (these values are either derived above or set to defaults)
   // ----------------------------------------------------------------------
   
@@ -495,27 +494,27 @@ const tailRadius = 4;
   };
 
   // Generate the three SVGs:
-const frontSvg = drawTagelharpaSVG(config);
-const sideSvg = drawTagelharpaSideSVG(config);
-const frameSvg = drawTagelharpaFrameSVG(config);
+const frontSvg = drawTalharpaSVG(config);
+const sideSvg = drawTalharpaSideSVG(config);
+const frameSvg = drawTalharpaFrameSVG(config);
 
 // Insert (or replace) the SVG inside their containers:
-const frontContainer = document.getElementById("tagelharpaContainer");
-const sideContainer = document.getElementById("tagelharpaSideContainer");
-const frameContainer = document.getElementById("tagelharpaFrameContainer");
+const frontContainer = document.getElementById("talharpaContainer");
+const sideContainer = document.getElementById("talharpaSideContainer");
+const frameContainer = document.getElementById("talharpaFrameContainer");
 
 if (frontContainer) {
   frontContainer.innerHTML = '';  // clear any existing
   frontContainer.appendChild(frontSvg);
 } else {
-  console.warn("No element with id='tagelharpaContainer' found.");
+  console.warn("No element with id='talharpaContainer' found.");
 }
 
 if (sideContainer) {
   sideContainer.innerHTML = '';  // clear any existing
   sideContainer.appendChild(sideSvg);
 } else {
-  console.warn("No element with id='tagelharpaSideContainer' found.");
+  console.warn("No element with id='talharpaSideContainer' found.");
 }
 
 if (frameContainer) {
@@ -532,12 +531,12 @@ Alternatively, use a softer wood with the grain running across the headstock - t
 Instrument.</i></p>
 <h3>1. Prepare Your Work Area and Materials</h3>
 <p>
-  For an initial Tagelharpa build, it's best to use inexpensive wood and simple hand or power tools:
+  For an initial Talharpa build, it's best to use inexpensive wood and simple hand or power tools:
 </p>
 <ul>
   <li><strong>Wood Choice:</strong> C24 construction‐grade spruce (200 × 75 mm) joists are affordable and durable enough for a first attempt.</li>
   <li><strong>Tools Needed:</strong> Tape measure, ruler, pencil, clamps, jigsaw (or hand saw), sanding block or sander (80–120 grit), and eye/dust protection.</li>
-  <li><strong>Layout:</strong> Transfer the Tagelharpa’s front outline (from your drawing) onto the wide face of the spruce joist. Double‐check critical measurements (overall length, body width at top & bottom, etc.).</li>
+  <li><strong>Layout:</strong> Transfer the Talharpa’s front outline (from your drawing) onto the wide face of the spruce joist. Double‐check critical measurements (overall length, body width at top & bottom, etc.).</li>
 </ul>
 
 <h3>2. Rough‐Cut the Outer Shape</h3>
@@ -554,7 +553,7 @@ Instrument.</i></p>
   The interior cut‐out is offset 7 mm from the sides and 18 mm at the bottom for tailpiece reinforcement:
 </p>
 <ul>
-  <li><strong>Mark the Inner Lines:</strong> Measure inward 7 mm along each side, and 18 mm from the bottom. Sketch these lines to match the taper shown in your Tagelharpa frame drawing.</li>
+  <li><strong>Mark the Inner Lines:</strong> Measure inward 7 mm along each side, and 18 mm from the bottom. Sketch these lines to match the taper shown in your Talharpa frame drawing.</li>
   <li><strong>Drill Starter Holes (Optional):</strong> If using a jigsaw for the inner window, drill a hole inside the waste area to insert the blade.</li>
   <li><strong>Cut the Interior:</strong> Carefully saw along (or just outside) your inner line. Remove sections in stages if needed.</li>
   <li><strong>Sand or Rasp the Interior:</strong> Smooth the inner edges, maintaining the 7 mm side thickness and 18 mm tail thickness.</li>
@@ -573,7 +572,7 @@ Instrument.</i></p>
 
 <h3>5. Soundboards</h3>
 <p>
-  The Tagelharpa typically features two soundboards (top and possibly bottom) that can be fashioned from the same spruce joist material:
+  The Talharpa typically features two soundboards (top and possibly bottom) that can be fashioned from the same spruce joist material:
 </p>
 <ul>
   <li>
@@ -588,7 +587,7 @@ Instrument.</i></p>
   </li>
   <li>
     <strong>Gluing the Soundboard:</strong>
-    Once planed and fitted, glue the soundboard onto the Tagelharpa frame using a strong wood adhesive (e.g., Gorilla Glue or a specialized instrument glue).
+    Once planed and fitted, glue the soundboard onto the Talharpa frame using a strong wood adhesive (e.g., Gorilla Glue or a specialized instrument glue).
     Clamp it securely around the perimeter and allow adequate drying time per the glue manufacturer’s instructions.
   </li>
 </ul>
@@ -600,7 +599,7 @@ Instrument.</i></p>
 
 <h3>6. Summary</h3>
 <p>
-  By following these steps with a jigsaw, basic hand tools, and C24 spruce, you can build a functional Tagelharpa frame. 
+  By following these steps with a jigsaw, basic hand tools, and C24 spruce, you can build a functional Talharpa frame. 
   The 7 mm walls and 18 mm tail thickness provide structural support, especially for anchoring the tailpiece. 
   Once you’re comfortable with this initial prototype, consider upgrading to hardwoods or refining the design for improved tone and aesthetics.
 </p>
@@ -611,7 +610,7 @@ Instrument.</i></p>
 frameContainer.appendChild(wrapperDiv);
 
 } else {
-  console.warn("No element with id='tagelharpaFrameContainer' found.");
+  console.warn("No element with id='talharpaFrameContainer' found.");
 }
 
 var designPrintOut = document.getElementById("designPrintOut");
