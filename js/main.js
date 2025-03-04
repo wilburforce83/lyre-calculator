@@ -113,7 +113,7 @@ function generateFeasibleTunings(scaleLength, intervals) {
         inRangeCount++;
       }
     }
-    let rangeFactor = 1.5;
+    let rangeFactor = 1.75;
 
     if (scaleLength > 39){
       rangeFactor = 1.2;
