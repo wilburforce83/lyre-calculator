@@ -16,27 +16,42 @@
      <!-- Navbar -->
      <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar; cls-active: uk-navbar-sticky;">
         <!-- Navbar content here -->
-     <div class="uk-container uk-container-expand" style="background-color: #000;">
-        <nav class="uk-navbar" uk-navbar style="background-color: #000; color: #fff;">
-          <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo navbar-title" href="index.html" aria-label="Home">
-              Tagelharpa Designer
-            </a>
-          </div>
-          <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav uk-visible@m">
-              <li class="uk-active"><a href="index.html" style="color: #fff;">Home</a></li>
-              <li><a href="about.html" style="color: #fff;">About</a></li>
-            </ul>
-            <div class="uk-navbar-item">
-              <a class="uk-icon-link" href="https://github.com/wilburforce83" target="_blank" uk-icon="icon: github" style="color: #fff;"></a>
-            </div>
-            <!-- Mobile toggle -->
-            <a class="uk-navbar-toggle uk-hidden@m uk-icon" href="#offcanvas" uk-navbar-toggle-icon uk-toggle aria-label="Open menu"></a>
-          </div>
-        </nav>
+     <!-- Navbar container -->
+<div class="uk-container uk-container-expand" style="background-color: #000;">
+    <nav class="uk-navbar" uk-navbar style="background-color: #000; color: #fff;">
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo navbar-title" href="index.html" aria-label="Home">
+          Open Tagelharpa<br>
+          <span style="font-size: 0.8rem; color: #fff;">the opensource bowed lyre</span>
+        </a>
       </div>
+      <div class="uk-navbar-right">
+        <!-- Desktop Navigation Links -->
+        <ul class="uk-navbar-nav uk-visible@m">
+          <li class="uk-active"><a href="index.html" style="color: #fff;">Home</a></li>
+          <li><a href="about.html" style="color: #fff;">About</a></li>
+        </ul>
+        <!-- GitHub Icon -->
+        <div class="uk-navbar-item">
+          <a class="uk-icon-link" href="https://github.com/wilburforce83" target="_blank" uk-icon="icon: github" style="color: #fff;"></a>
+        </div>
+        <!-- Mobile toggle -->
+        <a class="uk-navbar-toggle uk-hidden@m uk-icon" href="#offcanvas" uk-navbar-toggle-icon uk-toggle aria-label="Open menu"></a>
+      </div>
+    </nav>
+  </div>
+     </div>
+  
+  <!-- Off-canvas mobile menu -->
+  <div id="offcanvas" uk-offcanvas="mode: slide; overlay: true;">
+    <div class="uk-offcanvas-bar">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
     </div>
+  </div>
+  
       <div class="uk-container uk-margin-top">
       <!-- Introduction and helper -->
       <div class="uk-flex uk-flex-center">
@@ -182,6 +197,7 @@
 
             <!-- Single-Octave Scale Table -->
             <div id="noteDistanceTable" class="uk-margin"></div>
+            <div class="page-break"></div>
             
           </div>
         </div>

@@ -72,4 +72,9 @@
 }
   
 
+/* Increase the top offset for notifications in the top-center position */
+.uk-notification-top-center {
+  top: 80px !important; /* Adjust this value as needed */
+}
+
 /* You can add any additional custom styling here */

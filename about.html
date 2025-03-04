@@ -18,29 +18,44 @@
         <!-- Navbar content here -->
      
       
-     <div class="uk-container uk-container-expand" style="background-color: #000;">
-        <nav class="uk-navbar" uk-navbar style="background-color: #000; color: #fff;">
-          <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo navbar-title" href="index.html" aria-label="Home">
-              Tagelharpa Designer
-            </a>
-          </div>
-          <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav uk-visible@m">
-              <li class="uk-active"><a href="index.html" style="color: #fff;">Home</a></li>
-              <li><a href="about.html" style="color: #fff;">About</a></li>
-            </ul>
-            <div class="uk-navbar-item">
-              <a class="uk-icon-link" href="https://github.com/wilburforce83" target="_blank" uk-icon="icon: github" style="color: #fff;"></a>
-            </div>
-            <!-- Mobile toggle -->
-            <a class="uk-navbar-toggle uk-hidden@m uk-icon" href="#offcanvas" uk-navbar-toggle-icon uk-toggle aria-label="Open menu"></a>
-          </div>
-        </nav>
+    <!-- Navbar container -->
+<div class="uk-container uk-container-expand" style="background-color: #000;">
+    <nav class="uk-navbar" uk-navbar style="background-color: #000; color: #fff;">
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo navbar-title" href="index.html" aria-label="Home">
+          Open Tagelharpa<br>
+          <span style="font-size: 0.8rem; color: #fff;">the opensource bowed lyre</span>
+        </a>
       </div>
+      <div class="uk-navbar-right">
+        <!-- Desktop Navigation Links -->
+        <ul class="uk-navbar-nav uk-visible@m">
+          <li class="uk-active"><a href="index.html" style="color: #fff;">Home</a></li>
+          <li><a href="about.html" style="color: #fff;">About</a></li>
+        </ul>
+        <!-- GitHub Icon -->
+        <div class="uk-navbar-item">
+          <a class="uk-icon-link" href="https://github.com/wilburforce83" target="_blank" uk-icon="icon: github" style="color: #fff;"></a>
+        </div>
+        <!-- Mobile toggle -->
+        <a class="uk-navbar-toggle uk-hidden@m uk-icon" href="#offcanvas" uk-navbar-toggle-icon uk-toggle aria-label="Open menu"></a>
+      </div>
+    </nav>
+  </div>
+  
+  <!-- Off-canvas mobile menu -->
+  <div id="offcanvas" uk-offcanvas="mode: slide; overlay: true;">
+    <div class="uk-offcanvas-bar">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+  
     </div>
     <div class="uk-container uk-margin-top">
-      <h1>About Tagelharpa Designer</h1>
+      <h2>About Open Tagelharpa Designer</h2>
       <p>
         This tool is designed to help calculate and visualize various design aspects of the Tagelharpa. It is an attempt to try and create a level of standardisation to help <b>amatuer</b> builders avoid 
         analysis paralysis. When I started looking at how to build a bowed lyre, I was overwhelmed by how much conflicting information was available about every little aspect.
@@ -60,10 +75,10 @@
       </p>
 
       <div class="uk-container uk-margin-top">
-        <h2>Critical Dimensions for the Talharpa Instrument</h2>
+        <h2>Critical Dimensions for the Tagelharpa Instrument</h2>
 
 <p>
-  The Talharpa’s design is based on a set of proportional relationships that scale the instrument’s dimensions according to the chosen scale length and number of strings.
+  The Tagelharpa’s design is based on a set of proportional relationships that scale the instrument’s dimensions according to the chosen scale length and number of strings.
   Below is an explanation of each critical dimension using traditional mathematical formulas.
 </p>
 
