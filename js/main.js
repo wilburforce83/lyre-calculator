@@ -115,7 +115,7 @@ function generateFeasibleTunings(scaleLength, intervals) {
     }
 
     // If at least half are in range, we keep it
-    if (inRangeCount >= Math.ceil(intervals.length / 2)) {
+    if (inRangeCount >= Math.ceil(intervals.length / 1.5)) {
       // Convert each freq to nearest main note
       let stringNotes = [];
       for (let f of stringFreqs) {
